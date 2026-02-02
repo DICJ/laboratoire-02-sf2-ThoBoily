@@ -1,0 +1,1 @@
+from personnage import Personnage
