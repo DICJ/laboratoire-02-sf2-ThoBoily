@@ -1,4 +1,4 @@
-from personnage import Personnage
+from classes.personnage import Personnage
 from random import randint
 
 class Guerrier(Personnage):
@@ -10,15 +10,18 @@ class Guerrier(Personnage):
 
         self.force = force
 
+    def __str__(self):
+        return f"Guerrier : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Force : {self.force}"
+
     @property
     def force(self):
         return self._force 
     
-    @force.setter()
-    def force(self):
+    @force.setter
+    def force(self, new_force: int):
 
-        if self.force >= 0 and self.force <= 50:
-            self._force = self.force
+        if new_force >= 0 and new_force <= 50:
+            self._force = new_force
 
         else:
             print("Erreur, votre valeur de force est invalide !")

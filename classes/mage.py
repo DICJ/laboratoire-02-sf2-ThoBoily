@@ -1,4 +1,4 @@
-from personnage import Personnage
+from classes.personnage import Personnage
 from random import randint
 
 class Mage(Personnage):
@@ -10,16 +10,18 @@ class Mage(Personnage):
 
         self.mana = mana
 
+    def __str__(self):
+        return f"Mage : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Mana : {self.mana}"
         
     @property
     def mana(self):
         return self._mana
     
-    @mana.setter()
-    def mana(self):
+    @mana.setter
+    def mana(self, new_mana: int):
 
-        if self.mana >= 0 and self.mana <= 100:
-            self._mana = self.mana
+        if new_mana >= 0 and new_mana <= 100:
+            self._mana = new_mana
 
         else:
             print("Erreur, votre valeur de mana est invalide !")

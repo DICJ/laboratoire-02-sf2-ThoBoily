@@ -12,7 +12,7 @@ class Personnage():
     def vie(self):
         return self._vie 
     
-    @vie.setter()
+    @vie.setter
     def vie(self, nouvelle_vie: int):
 
         if nouvelle_vie >= 0 and nouvelle_vie <= 500 and isinstance(nouvelle_vie, int):
@@ -26,10 +26,10 @@ class Personnage():
     def attaque(self):
         return self._attaque 
     
-    @attaque.setter()
+    @attaque.setter
     def attaque(self, nouvelle_attaque: int):
 
-        if nouvelle_attaque >= 0 and nouvelle_attaque <= 500 and isinstance(nouvelle_attaque, int):
+        if nouvelle_attaque >= 0 and nouvelle_attaque <= 50 and isinstance(nouvelle_attaque, int):
             self._attaque = nouvelle_attaque
 
         else:
