@@ -11,7 +11,7 @@ class Guerrier(Personnage):
         self.force = force
 
     def __str__(self):
-        return f"Guerrier : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Force : {self.force}"
+        return f"┃ Guerrier : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Force : {self.force}"
 
     @property
     def force(self):
@@ -24,8 +24,7 @@ class Guerrier(Personnage):
             self._force = new_force
 
         else:
-            print("Erreur, votre valeur de force est invalide !")
-            self._force = 0
+            print("┗ Erreur ⋅ Votre valeur de force est invalide !")
 
     def attaquer(self) -> float:
         """Calcul les dégats d'une attaque

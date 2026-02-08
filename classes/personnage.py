@@ -9,7 +9,13 @@ class Personnage():
         self.attaque = attaque
 
     @property
-    def vie(self):
+    def vie(self) -> str:
+        """Getter de la variable vie
+
+        Returns:
+            (str): La vie du personnage
+        """
+
         return self._vie 
     
     @vie.setter
@@ -19,7 +25,7 @@ class Personnage():
             self._vie = nouvelle_vie
 
         else:
-            print("Erreur, votre valeur de vie est invalide !")
+            print("┗ Erreur ⋅ Votre valeur de vie est invalide !")
             self._vie = 0
 
     @property
@@ -33,7 +39,7 @@ class Personnage():
             self._attaque = nouvelle_attaque
 
         else:
-            print("Erreur, votre valeur d'attaque est invalide !")
+            print("┗ Erreur ⋅ Votre valeur d'attaque est invalide !")
             self._attaque = 0
 
     def subir_degat(self, degat: int):
@@ -43,4 +49,4 @@ class Personnage():
             degat (int): Dégat subi.
         """
         
-        self.vie -= degat
+        self._vie -= degat

@@ -11,7 +11,8 @@ def afficher_menu() -> int:
     print("┃ [1] Ajouter un personnage")
     print("┃ [2] Voir les personnages dans l'arène")
     print("┃ [3] Faire combattre deux personnages")
-    print("┃ [4] Quitter")
+    print("┃ [4] Afficher l'historique des combats")
+    print("┃ [5] Quitter")
     reponse_usr = tester_var(input("┗ ⋅ Quel est votre choix ? "), int)
 
     return reponse_usr
@@ -19,7 +20,8 @@ def afficher_menu() -> int:
 programme = True
 
 lst_personnage = []
-arene = Arene(lst_personnage)
+lst_historique = []
+arene = Arene(lst_personnage, lst_historique)
 
 while programme:
 
@@ -62,12 +64,25 @@ while programme:
             arene.afficher_personnages()
 
         case 3:
-
-            index_pers_1 = tester_var(input(f"┗ ⋅ Quel est l'index du personnage 1. Entre 0 et {len(arene._lst_personnage)} ? "), int)
-            index_pers_2 = tester_var(input(f"┗ ⋅ Quel est l'index du personnage 2. Entre 0 et {len(arene._lst_personnage)} ? "), int)
             
-            arene.combattre(index_pers_1, index_pers_2)
+            if len(arene.lst_personnage) >= 2:
+
+                index_pers_1 = tester_var(input(f"┗ ⋅ Quel est l'index du personnage 1. Entre 0 et {len(arene.lst_personnage)-1} ? "), int)
+                index_pers_2 = tester_var(input(f"┗ ⋅ Quel est l'index du personnage 2. Entre 0 et {len(arene.lst_personnage)-1} ? "), int)
+                
+                detail = arene.combattre(index_pers_1, index_pers_2)
+
+                lst_historique.append(detail)
+            
+            else:
+                
+                print("┗ Erreur ⋅ Vous devez minimalement ajouter deux personnages à votre arène pour les faires se combattre !")
+
 
         case 4:
+
+            arene.afficher_historique(lst_historique)
+        
+        case 5:
             
             programme = False

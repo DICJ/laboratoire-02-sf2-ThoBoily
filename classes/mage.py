@@ -11,7 +11,7 @@ class Mage(Personnage):
         self.mana = mana
 
     def __str__(self):
-        return f"Mage : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Mana : {self.mana}"
+        return f"┃ Mage : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Mana : {self.mana}"
         
     @property
     def mana(self):
@@ -24,8 +24,7 @@ class Mage(Personnage):
             self._mana = new_mana
 
         else:
-            print("Erreur, votre valeur de mana est invalide !")
-            self._mana = 0
+            print("┗ Erreur ⋅ Votre valeur de mana est invalide !")
 
     def attaquer(self) -> float:
         """Calcul les dégats d'une attaque
@@ -46,4 +45,4 @@ class Mage(Personnage):
     def diminuer_mana(self):
         """Diminue le mana d'une valeur entre 15 et 25
         """
-        self.mana -= randint(15, 25)
+        self._mana -= randint(15, 25)

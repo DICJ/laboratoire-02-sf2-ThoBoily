@@ -11,7 +11,7 @@ class Archer(Personnage):
         self.dexterite = dexterite
 
     def __str__(self):
-        return f"Archer : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Dextérité : {self.dexterite}"
+        return f"┃ Archer : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Dextérité : {self.dexterite}"
 
     @property
     def dexterite(self):
@@ -24,8 +24,7 @@ class Archer(Personnage):
             self._dexterite = new_dexterite
 
         else:
-            print("Erreur, votre valeur de dexterité est invalide !")
-            self._dexterite = 40
+            print("┗ Erreur ⋅ Votre valeur de dexterité est invalide !")
 
     def attaquer(self) -> float:
         """Calcul les dégats d'une attaque
@@ -38,7 +37,7 @@ class Archer(Personnage):
 
         degat_attaque = self.attaque + 15
 
-        if nb_aleatoire < self.dexterite:
+        if nb_aleatoire < self._dexterite:
             degat_attaque *= 2
 
         return degat_attaque
