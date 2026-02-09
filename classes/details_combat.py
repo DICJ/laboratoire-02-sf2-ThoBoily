@@ -16,7 +16,15 @@ class Details_Combats():
         return self._nom_personnage_2
 
     def incrementer_tour(self):
+        """Incrémente la variable du nombre de tours de un
+        """
         self.nombre_tours += 1
 
     def definir_vainqueur(self, nom_vainqueur: str):
+        """Défini la personne entré en argument comme vainqueur
+
+        Args:
+            nom_vainqueur (str): Nom du vainqueur
+        """
+
         self.vainqueur = nom_vainqueur

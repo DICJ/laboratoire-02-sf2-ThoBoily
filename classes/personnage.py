@@ -10,11 +10,6 @@ class Personnage():
 
     @property
     def vie(self) -> str:
-        """Getter de la variable vie
-
-        Returns:
-            (str): La vie du personnage
-        """
 
         return self._vie 
     

@@ -5,6 +5,11 @@ from classes.mage import Mage
 from classes.archer import Archer
 
 def afficher_menu() -> int:
+    """Affiche le menu principal
+
+    Returns:
+        int: Réponse de l'utilisateur
+    """
     print(f"┏━━━━━━━━━━━━━━━━━━┓")
     print(f"┃  Menu Principal  ┃")
     print(f"┗━━━━━━━━━━━━━━━━━━┛")
@@ -12,7 +17,11 @@ def afficher_menu() -> int:
     print("┃ [2] Voir les personnages dans l'arène")
     print("┃ [3] Faire combattre deux personnages")
     print("┃ [4] Afficher l'historique des combats")
-    print("┃ [5] Quitter")
+    print("┃ [5] Soigner un personnage")
+    print("┃ [6] Nettoyer l'arène")
+    print("┃ [7] Voir le nombre de combatants dans l'arène")
+    print("┃ [8] Lancer un BattleRoyal")
+    print("┃ [9] Quitter")
     reponse_usr = tester_var(input("┗ ⋅ Quel est votre choix ? "), int)
 
     return reponse_usr
@@ -28,7 +37,8 @@ while programme:
     choix = afficher_menu()
 
     match choix:
-
+        
+        # Ajouter un personnage
         case 1:
             
             print(f"┏━━━━━━━━━━━━━━━┓")
@@ -59,10 +69,12 @@ while programme:
 
                     arene.ajouter_personnage(Archer(nom, vie, attaque, dexterite))
 
+        # Voir les personnages dans l'arène
         case 2:
             
             arene.afficher_personnages()
 
+        # Faire combattre deux personnages
         case 3:
             
             if len(arene.lst_personnage) >= 2:
@@ -70,19 +82,34 @@ while programme:
                 index_pers_1 = tester_var(input(f"┗ ⋅ Quel est l'index du personnage 1. Entre 0 et {len(arene.lst_personnage)-1} ? "), int)
                 index_pers_2 = tester_var(input(f"┗ ⋅ Quel est l'index du personnage 2. Entre 0 et {len(arene.lst_personnage)-1} ? "), int)
                 
-                detail = arene.combattre(index_pers_1, index_pers_2)
-
-                lst_historique.append(detail)
+                arene.combattre(index_pers_1, index_pers_2)
             
             else:
                 
                 print("┗ Erreur ⋅ Vous devez minimalement ajouter deux personnages à votre arène pour les faires se combattre !")
 
-
+        # Afficher l'historique des combats
         case 4:
 
             arene.afficher_historique(lst_historique)
         
+        # Soigner un personnage
         case 5:
+            pass
+        
+        # Nettoyer l'arène
+        case 6:
+            pass
+        
+        # Voir le nombre de combattants dans l'arène
+        case 7:
+            pass
+        
+        # Lancer un BattleRoyal
+        case 8:
+            pass
+        
+        # Quitter
+        case 9:
             
             programme = False
