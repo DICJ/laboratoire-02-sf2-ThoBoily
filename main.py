@@ -1,8 +1,10 @@
 from utils import tester_var
 from classes.arene import Arene
+from classes.armure import Armure
 from classes.guerrier import Guerrier
 from classes.mage import Mage
 from classes.archer import Archer
+from classes.soldat import Soldat
 
 def afficher_menu() -> int:
     """Affiche le menu principal
@@ -32,6 +34,7 @@ lst_personnage = []
 lst_historique = []
 arene = Arene(lst_personnage, lst_historique)
 
+
 while programme:
 
     choix = afficher_menu()
@@ -44,7 +47,7 @@ while programme:
             print(f"┏━━━━━━━━━━━━━━━┓")
             print(f"┃  Personnages  ┃")
             print(f"┗━━━━━━━━━━━━━━━┛")
-            type = tester_var(input("┗ ⋅ Quel est le type de votre personnage [1] : Guerrier, [2] : Mage, [3] : Archer ? "), int) 
+            type = tester_var(input("┗ ⋅ Quel est le type de votre personnage \n┃ [1] : Guerrier, \n┃ [2] : Mage, \n┃ [3] : Archer, \n┃ [4] : Soldat ? "), int) 
             nom = tester_var(input("┗ ⋅ Quel est le nom de votre personnage ? "), str)
             vie = tester_var(input("┗ ⋅ Quel est le niveau de vie de votre personnage. Entre 0 et 500 ? "), int)
             attaque = tester_var(input("┗ ⋅ Quel est le niveau d'attaque de votre personnage. Entre 0 et 50 ? "), int)
@@ -55,19 +58,23 @@ while programme:
 
                     force = tester_var(input("┗ ⋅ Quel est le niveau de force de votre personnage. Entre 0 et 50 ? "), int)
 
-                    arene.ajouter_personnage(Guerrier(nom, vie, attaque, force))
+                    arene.ajouter_personnage(Guerrier(nom, vie, attaque, Armure("Armure de plaque", 12), force))
 
                 case 2:
 
                     mana = tester_var(input("┗ ⋅ Quel est le niveau de mana de votre personnage. Entre 0 et 100 ? "), int)
 
-                    arene.ajouter_personnage(Mage(nom, vie, attaque, mana))
+                    arene.ajouter_personnage(Mage(nom, vie, attaque, Armure("Armure magique", 7), mana))
 
                 case 3:
 
                     dexterite = tester_var(input("┗ ⋅ Quel est le niveau de dexterite de votre personnage. Entre 40 et 70 ? "), int)
 
-                    arene.ajouter_personnage(Archer(nom, vie, attaque, dexterite))
+                    arene.ajouter_personnage(Archer(nom, vie, attaque, Armure("Tunique de cuire", 5), dexterite))
+
+                case 4:
+
+                    arene.ajouter_personnage(Soldat(nom, vie, attaque, Armure("Cotte de maille", 15)))
 
         # Voir les personnages dans l'arène
         case 2:
@@ -95,19 +102,28 @@ while programme:
         
         # Soigner un personnage
         case 5:
-            pass
+            
+            index_pers= tester_var(input(f"┗ ⋅ Quel est l'index du personnage que vous voulez soigner. Entre 0 et {len(arene.lst_personnage)-1} ? "), int)
+
+            arene.soigner_personnage(index_pers, lst_personnage)
         
         # Nettoyer l'arène
         case 6:
-            pass
+            arene.nettoyer_arene(lst_personnage)
         
         # Voir le nombre de combattants dans l'arène
         case 7:
-            pass
+            print(arene.__len__())
         
         # Lancer un BattleRoyal
         case 8:
-            pass
+            
+
+            lst_personnage.append(Guerrier("Guerrier", 500, 50, Armure("Armure de plaque", 12), 50))
+            lst_personnage.append(Mage("Mage", 500, 50, Armure("Armure magique", 7), 50))
+            lst_personnage.append(Archer("Archer", 500, 50, Armure("Tunique de cuire", 5), 50))
+            lst_personnage.append(Soldat("Soldat", 500, 50, Armure("Cotte de maille", 15)))
+
         
         # Quitter
         case 9:

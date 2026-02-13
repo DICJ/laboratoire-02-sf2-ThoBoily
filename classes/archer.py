@@ -1,17 +1,18 @@
 from classes.personnage import Personnage
+from classes.armure import Armure
 from random import randint
 
 class Archer(Personnage):
 
-    def __init__(self, nom: str, vie: int, attaque: int, dexterite: int):
-        super().__init__(nom, vie, attaque)
+    def __init__(self, nom: str, vie: int, attaque: int, armure: Armure, dexterite: int):
+        super().__init__(nom, vie, attaque, armure)
 
         self._dexterite = dexterite
 
         self.dexterite = dexterite
 
     def __str__(self):
-        return f"┃ Archer : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Dextérité : {self.dexterite}"
+        return f"┃ Archer : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Dextérité : {self.dexterite}, Points d'armures : {self._armure.points_armure}"
 
     @property
     def dexterite(self):

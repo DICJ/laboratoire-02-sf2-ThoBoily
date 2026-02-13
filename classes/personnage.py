@@ -1,17 +1,27 @@
+from classes.armure import Armure
+
 class Personnage():
 
-    def __init__(self, nom: str, vie: int, attaque: int):
+    def __init__(self, nom: str, vie: int, attaque: int, armure: Armure):
         self.nom = nom
         self._vie = vie
         self._attaque = attaque
+        self._armure = armure
 
         self.vie = vie
         self.attaque = attaque
+        
+        self._vie_max = vie
 
     @property
     def vie(self) -> str:
 
         return self._vie 
+    
+    @property
+    def vie_max(self) -> str:
+
+        return self._vie_max 
     
     @vie.setter
     def vie(self, nouvelle_vie: int):
@@ -43,5 +53,11 @@ class Personnage():
         Args:
             degat (int): Dégat subi.
         """
+
+        degat_final = degat - self._armure.points_armure
         
-        self._vie -= degat
+        self._vie -= degat_final
+
+    def reset_vie(self):
+
+        self._vie = self._vie_max

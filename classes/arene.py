@@ -8,6 +8,18 @@ class Arene():
         self._lst_personnage: list[Personnage] = lst_personnage
         self._lst_historique: list[Details_Combats] = lst_historique
 
+    def __len__(self):
+
+        compteur_personnages = 0
+
+        for personnage in self._lst_personnage:
+
+            if personnage.vie > 0:
+
+                compteur_personnages += 1
+
+        return f"┃ Il y a {compteur_personnages} personnages qui sont prêts à combattres !"
+
     @property
     def lst_personnage(self):
         return self._lst_personnage
@@ -32,7 +44,7 @@ class Arene():
         if len(self._lst_personnage) > 0:
 
             for index, personnage in enumerate(self._lst_personnage):
-
+                        
                 print(f"┃ [{index}] {personnage}")
         
         else:
@@ -85,11 +97,11 @@ class Arene():
 
             if personnage_1.vie < 0:
                 print(f"┃ {personnage_2.nom} est le gagnant !")
-                detail.definir_vainqueur(personnage_1)
+                detail.definir_vainqueur(personnage_2)
 
             elif personnage_2.vie < 0:
                 print(f"┃ {personnage_1.nom} est le gagnant !")
-                detail.definir_vainqueur(personnage_2)
+                detail.definir_vainqueur(personnage_1)
             
             self.lst_historique.append(detail)
         
@@ -111,3 +123,17 @@ class Arene():
             print(f"┃ Nombre de tour : {combat.nombre_tours}")
             print("┃\n┃")
 
+    def soigner_personnage(self, index_personnage: int, lst_personnage: list):
+
+        personnage = lst_personnage[index_personnage]
+
+        personnage.vie = personnage.vie_max
+
+
+    def nettoyer_arene(self, lst_personnage: list):
+
+        for personnage in lst_personnage:
+
+            if personnage.vie <= 0:
+
+                lst_personnage.remove(personnage)

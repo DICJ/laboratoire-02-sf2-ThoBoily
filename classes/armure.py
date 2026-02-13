@@ -12,7 +12,7 @@ class Armure():
         return self._points_armure 
     
     @points_armure.setter
-    def vie(self, nouveau_point_armure: int):
+    def points_armure(self, nouveau_point_armure: int):
 
         if nouveau_point_armure >= 0 and nouveau_point_armure <= 15 and isinstance(nouveau_point_armure, int):
             self._points_armure = nouveau_point_armure
