@@ -5,6 +5,7 @@ from classes.guerrier import Guerrier
 from classes.mage import Mage
 from classes.archer import Archer
 from classes.soldat import Soldat
+from classes.berserker import Berserker
 
 def afficher_menu() -> int:
     """Affiche le menu principal
@@ -47,7 +48,7 @@ while programme:
             print(f"┏━━━━━━━━━━━━━━━┓")
             print(f"┃  Personnages  ┃")
             print(f"┗━━━━━━━━━━━━━━━┛")
-            type = tester_var(input("┗ ⋅ Quel est le type de votre personnage \n┃ [1] : Guerrier, \n┃ [2] : Mage, \n┃ [3] : Archer, \n┃ [4] : Soldat ? "), int) 
+            type = tester_var(input("┗ ⋅ Quel est le type de votre personnage \n┃ [1] : Guerrier, \n┃ [2] : Mage, \n┃ [3] : Archer, \n┃ [4] : Soldat, \n┃ [5] : Berserker ? "), int) 
             nom = tester_var(input("┗ ⋅ Quel est le nom de votre personnage ? "), str)
             vie = tester_var(input("┗ ⋅ Quel est le niveau de vie de votre personnage. Entre 0 et 500 ? "), int)
             attaque = tester_var(input("┗ ⋅ Quel est le niveau d'attaque de votre personnage. Entre 0 et 50 ? "), int)
@@ -75,6 +76,12 @@ while programme:
                 case 4:
 
                     arene.ajouter_personnage(Soldat(nom, vie, attaque, Armure("Cotte de maille", 15)))
+
+                case 5:
+                    
+                    force = tester_var(input("┗ ⋅ Quel est le niveau de force de votre personnage. Entre 0 et 50 ? "), int)
+                    
+                    arene.ajouter_personnage(Berserker(nom, vie, attaque, Armure("Armure de plaque", 12), force))
 
         # Voir les personnages dans l'arène
         case 2:
@@ -118,12 +125,16 @@ while programme:
         # Lancer un BattleRoyal
         case 8:
             
+            arene.battle_royal(lst_personnage)
+            
+
+        case 15:
 
             lst_personnage.append(Guerrier("Guerrier", 500, 50, Armure("Armure de plaque", 12), 50))
             lst_personnage.append(Mage("Mage", 500, 50, Armure("Armure magique", 7), 50))
             lst_personnage.append(Archer("Archer", 500, 50, Armure("Tunique de cuire", 5), 50))
             lst_personnage.append(Soldat("Soldat", 500, 50, Armure("Cotte de maille", 15)))
-
+            lst_personnage.append(Berserker("Berserker", 500, 50, Armure("Armure de plaque", 12), 50))
         
         # Quitter
         case 9:

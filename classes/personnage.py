@@ -13,6 +13,13 @@ class Personnage():
         
         self._vie_max = vie
 
+    def __eq__(self, autre_personnage: 'Personnage'):
+
+        if self.nom == autre_personnage.nom and self.vie == autre_personnage.vie:
+            return True
+        else:
+            return False
+
     @property
     def vie(self) -> str:
 
@@ -23,6 +30,10 @@ class Personnage():
 
         return self._vie_max 
     
+    @property
+    def attaque(self):
+        return self._attaque 
+    
     @vie.setter
     def vie(self, nouvelle_vie: int):
 
@@ -32,10 +43,6 @@ class Personnage():
         else:
             print("┗ Erreur ⋅ Votre valeur de vie est invalide !")
             self._vie = 0
-
-    @property
-    def attaque(self):
-        return self._attaque 
     
     @attaque.setter
     def attaque(self, nouvelle_attaque: int):
@@ -57,7 +64,3 @@ class Personnage():
         degat_final = degat - self._armure.points_armure
         
         self._vie -= degat_final
-
-    def reset_vie(self):
-
-        self._vie = self._vie_max

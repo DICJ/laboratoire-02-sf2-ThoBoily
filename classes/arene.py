@@ -1,6 +1,8 @@
 from classes.personnage import Personnage
 from classes.details_combat import Details_Combats
 
+from random import randint
+
 class Arene():
 
     def __init__(self, lst_personnage: list, lst_historique: list):
@@ -137,3 +139,42 @@ class Arene():
             if personnage.vie <= 0:
 
                 lst_personnage.remove(personnage)
+
+    def battle_royal(self, lst_personnage: list):
+
+        combat = True
+
+        lst_personnage_tmp = list(lst_personnage)
+
+        while combat:
+
+            if len(lst_personnage_tmp) != 1:
+
+                index_personnage_1 = randint(0, (len(lst_personnage_tmp)-1))
+                index_personnage_2 = randint(0, (len(lst_personnage_tmp)-1))
+
+                if index_personnage_1 == index_personnage_2:
+                    continue
+
+                else:
+
+                    personnage_1 = lst_personnage_tmp[index_personnage_1]
+                    personnage_2 = lst_personnage_tmp[index_personnage_2]
+
+                    degat_personnage_1 = personnage_1.attaquer()
+                    personnage_2.subir_degat(degat_personnage_1)
+                    
+                    print(f"┃ {personnage_1.nom} inflige {degat_personnage_1} à {personnage_2.nom}")
+
+                    if personnage_2.vie <= 0:
+
+                        
+                        print(f"┃ {personnage_2.nom} est mort")
+                        
+                        lst_personnage_tmp.remove(personnage_2)
+
+            else:
+            
+                print(f"┃ {lst_personnage_tmp[0].nom} est le gagnant !")
+
+                combat = False
