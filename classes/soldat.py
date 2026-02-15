@@ -9,12 +9,23 @@ class Soldat(Personnage):
     def __str__(self):
         return f"┃ Soldat : {self.nom}, Vie : {self.vie}, Attaque : {self.attaque}, Points d'armures : {self._armure.points_armure}"
 
-    def subir_degat(self, degat):
+    def subir_degat(self, degat: int):
+        """Dégats que le personnage subi
+
+        Args:
+            degat (int): Dégat de l'attaque
+        """
 
         self._vie -= degat*0.9
 
-    def attaquer(self):
+    def attaquer(self) -> int:
+        """Calcul des dégats d'une attaque
 
+        Returns:
+            int: Les dégats de l'attaque
+        """
+
+        # Dégat
         degat_attaque = self.attaque
 
         return degat_attaque

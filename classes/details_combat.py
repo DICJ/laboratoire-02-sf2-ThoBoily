@@ -18,6 +18,8 @@ class Details_Combats():
     def incrementer_tour(self):
         """Incrémente la variable du nombre de tours de un
         """
+
+        # Ajout d'un tour
         self.nombre_tours += 1
 
     def definir_vainqueur(self, nom_vainqueur: str):
@@ -27,4 +29,5 @@ class Details_Combats():
             nom_vainqueur (str): Nom du vainqueur
         """
 
+        # Attribution du nom du vainqueur
         self.vainqueur = nom_vainqueur

@@ -22,12 +22,10 @@ class Personnage():
 
     @property
     def vie(self) -> str:
-
         return self._vie 
     
     @property
     def vie_max(self) -> str:
-
         return self._vie_max 
     
     @property
@@ -37,21 +35,36 @@ class Personnage():
     @vie.setter
     def vie(self, nouvelle_vie: int):
 
+        # Si la vie est entre 0 et 500 et qu'elle est un int
         if nouvelle_vie >= 0 and nouvelle_vie <= 500 and isinstance(nouvelle_vie, int):
+
+            # Attribution de la nouvelle vie
             self._vie = nouvelle_vie
 
         else:
+
+            # Message d'erreur
             print("┗ Erreur ⋅ Votre valeur de vie est invalide !")
+
+            # Vie par défaut
             self._vie = 0
     
     @attaque.setter
     def attaque(self, nouvelle_attaque: int):
 
+        
+        # Si l'attaque est entre 0 et 50 et qu'elle est un int
         if nouvelle_attaque >= 0 and nouvelle_attaque <= 50 and isinstance(nouvelle_attaque, int):
+
+            # Attribution de la nouvelle attaque
             self._attaque = nouvelle_attaque
 
         else:
+
+            # Message d'erreur
             print("┗ Erreur ⋅ Votre valeur d'attaque est invalide !")
+
+            # Attque par défaut
             self._attaque = 0
 
     def subir_degat(self, degat: int):
@@ -61,6 +74,8 @@ class Personnage():
             degat (int): Dégat subi.
         """
 
+        # Formule des dégat
         degat_final = degat - self._armure.points_armure
         
+        # Retirer les dégats à la vie
         self._vie -= degat_final

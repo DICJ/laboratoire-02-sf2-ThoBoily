@@ -26,11 +26,16 @@ class Mage(Personnage):
 
     @mana.setter
     def mana(self, new_mana: int):
+        
+        # Si le mana est entre 0 et 100 et qu'il est un int
+        if new_mana >= 0 and new_mana <= 100 and isinstance(new_mana, int):
 
-        if new_mana >= 0 and new_mana <= 100:
+            # Attribution du nouveau mana
             self._mana = new_mana
 
         else:
+
+            # Message d'erreur
             print("┗ Erreur ⋅ Votre valeur de mana est invalide !")
 
     def attaquer(self) -> float:
@@ -40,11 +45,17 @@ class Mage(Personnage):
             float: Dégats de l'attaque
         """
 
+        # Si le personnage a du mana
         if self.mana > 0:
+
+            # Ajout de 60 à ses dégats
             degat_attaque = (self.attaque + 60)
         else:
-            degat_attaque = self.attaque
 
+            # Dégat de base
+            degat_attaque = self.attaque
+        
+        # Diminuer le mana
         self.diminuer_mana()
 
         return degat_attaque
@@ -52,8 +63,11 @@ class Mage(Personnage):
     def diminuer_mana(self):
         """Diminue le mana d'une valeur entre 15 et 25
         """
+
+        # Diminution du mana
         self._mana -= randint(15, 25)
 
     def reset_mana(self):
 
+        # Remet le mana à sa valeur initiale
         self._mana = self._mana_max

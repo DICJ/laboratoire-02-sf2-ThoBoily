@@ -20,11 +20,16 @@ class Guerrier(Personnage):
     
     @force.setter
     def force(self, new_force: int):
+        
+        # Si la force est entre 0 et 50 et qu'elle est un int
+        if new_force >= 0 and new_force <= 50 and isinstance(new_force, int):
 
-        if new_force >= 0 and new_force <= 50:
+            # Attribution de la nouvelle valeur de force
             self._force = new_force
 
         else:
+
+            # Message d'erreur
             print("┗ Erreur ⋅ Votre valeur de force est invalide !")
 
     def attaquer(self) -> float:
@@ -34,6 +39,7 @@ class Guerrier(Personnage):
             float: Dégats de l'attaque
         """
 
+        # Formule des dégats d'une attaque
         degat_attaque = (self.attaque + (self.force / 2) + randint(-2, 2))
 
         return degat_attaque

@@ -10,17 +10,24 @@ class Berserker(Guerrier):
 
     def attaquer(self):
 
+        # Vie perdu
         diff_vie = self.vie_max - self.vie
+
+        # Nombre de fois qu'il faut lui attribuer le bonus
         nb_fois_bonus = diff_vie // 10
 
+        # Nouveau dégat de ses attaques
         degat_attaque = super().attaquer() + nb_fois_bonus * 5
 
         return degat_attaque
     
 
     def subir_degat(self, degat):
-
+        
+        # Si il est a 50% et moin de sa vie
         if self.vie // self.vie_max < 0.5:
+
+            # Impression du message
             print(f"┃ Le Berserker {self.nom} entre en FUREUR !")
 
         return super().subir_degat(degat)
